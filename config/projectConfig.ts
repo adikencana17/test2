@@ -44,7 +44,7 @@ const projectConfig = {
   scanUrl:
     process.env.NODE_ENV === 'development'
       ? 'https://etherscan.io/address/your_ethereum_contract_addres'
-      : 'https://rinkeby.etherscan.io/address/0x9ebaca53634d3bcb29b3d6defbb32ae17d389014',
+      : 'https://rinkeby.etherscan.io/address/0xfd7a90c424cce148f062cbeb88321e4a24980843',
   // 'https://etherscan.io/address/your_ethereum_contract_address'
   // 'https://rinkeby.etherscan.io/address/your_rinkeby_contract_address'
 };
