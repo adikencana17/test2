@@ -1,6 +1,3 @@
-/**
- *Submitted for verification at Etherscan.io on 2022-04-13
-*/
 
 // File: @openzeppelin/contracts/security/ReentrancyGuard.sol
 
@@ -731,7 +728,7 @@ interface IERC721Metadata is IERC721 {
     function tokenURI(uint256 tokenId) external view returns (string memory);
 }
 
-// File: contracts/ERC721A.sol
+// File: ERC721A.sol
 
 
 // Creator: Chiru Labs
@@ -1358,7 +1355,7 @@ contract ERC721A is Context, ERC165, IERC721, IERC721Metadata {
         uint256 quantity
     ) internal virtual {}
 }
-// File: contracts/PGRobots.sol
+// File: PGRobots.sol
 
 
 
@@ -1368,7 +1365,7 @@ pragma solidity ^0.8.0;
 
 
 
-contract PGRobots is ERC721A, Ownable, ReentrancyGuard {
+contract PGRobotsV2 is ERC721A, Ownable, ReentrancyGuard {
   using Address for address;
   using Strings for uint;
 
@@ -1377,9 +1374,9 @@ contract PGRobots is ERC721A, Ownable, ReentrancyGuard {
 
   uint256  public  maxSupply = 3500;
   uint256 public  MAX_MINTS_PER_TX = 100;
-  uint256 public  PUBLIC_SALE_PRICE = 0.005 ether;
+  uint256 public  PUBLIC_SALE_PRICE = 0 ether;
   uint256 public  NUM_FREE_MINTS = 3500;
-  uint256 public  MAX_FREE_PER_WALLET = 100;
+  uint256 public  MAX_FREE_PER_WALLET = 10;
 
   uint256 public freeNFTAlreadyMinted = 0;
   bool public isPublicSaleActive = true;
