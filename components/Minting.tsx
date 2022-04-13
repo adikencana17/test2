@@ -22,7 +22,7 @@ export default function Minting() {
 
   async function mintNFTs() {
     if (account && ethereumProvider) {
-      const totalMintCost = (projectConfig.mintCost * mintAmount).toString();
+      const totalMintCost = (projectConfig.mintCost * numberOfTokens).toString();
       const totalWei = ethers.utils.parseEther(totalMintCost).toBigInt();
       setMessage('');
       setIsPending(true);
@@ -36,7 +36,7 @@ export default function Minting() {
           ABI,
           signer
         );
-        const transaction = await contract.mint(mintAmount, {
+        const transaction = await contract.mint(numberOfTokens, {
           value: totalWei,
         });
         setIsPending(false);
@@ -44,7 +44,7 @@ export default function Minting() {
         await transaction.wait();
         setIsMinting(false);
         setMessage(
-          `Yay! ${mintAmount} ${
+          `Yay! ${numberOfTokens} ${
             projectConfig.nftSymbol
           } successfully sent to ${account.substring(
             0,
@@ -58,14 +58,14 @@ export default function Minting() {
   }
 
   function decrementMintAmount() {
-    if (mintAmount > 1) {
-      setMintAmount(mintAmount - 1);
+    if (numberOfTokens > 1) {
+      setMintAmount(numberOfTokens - 1);
     }
   }
 
   function incrementMintAmount() {
-    if (mintAmount < projectConfig.maxMintAmountPerTxn) {
-      setMintAmount(mintAmount + 1);
+    if (numberOfTokens < projectConfig.maxMintAmountPerTxn) {
+      setMintAmount(numberOfTokens + 1);
     }
   }
 
@@ -112,7 +112,7 @@ export default function Minting() {
 
         <div className="text-center">
           <p className="text-xl">
-            Total price: {projectConfig.mintCost * mintAmount}{' '}
+            Total price: {projectConfig.mintCost * numberOfTokens}{' '}
             {projectConfig.chainName}
           </p>
           <p className="text-gray-400">(excluding gas fees)</p>
@@ -122,17 +122,17 @@ export default function Minting() {
           <IconContext.Provider value={{ size: '1.5em' }}>
             <button
               type="button"
-              className={mintAmount <= 1 ? 'text-gray-500 cursor-default' : ''}
+              className={numberOfTokens <= 1 ? 'text-gray-500 cursor-default' : ''}
               onClick={decrementMintAmount}
               disabled={false}
             >
               <FaMinusCircle />
             </button>
-            <span className="text-xl">{mintAmount}</span>
+            <span className="text-xl">{numberOfTokens}</span>
             <button
               type="button"
               className={
-                mintAmount >= projectConfig.maxMintAmountPerTxn
+                numberOfTokens >= projectConfig.maxMintAmountPerTxn
                   ? 'text-gray-500 cursor-default'
                   : ''
               }
