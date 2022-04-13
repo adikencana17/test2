@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useWeb3React } from '@web3-react/core';
-import { ethers } from 'ethers';
+import { ethers } from 'ethers';m
 import { IconContext } from 'react-icons';
-import { FaMinusCircle, FaPlusCircle } from 'react-icons/fa';
+import { FaMinusCircle, FaPlusCircle } from 'react-icons/fa';m
 
 import ABI from '../config/abi.json';
 import rpcConfig from '../config/rpcConfig';
@@ -18,7 +18,7 @@ export default function Minting() {
   const [totalSupply, setTotalSupply] = useState('?');
   const [isPending, setIsPending] = useState(false);
   const [isMinting, setIsMinting] = useState(false);
-  const [mintAmount, setMintAmount] = useState(1);
+  const [numberOfTokens, setMintAmount] = useState(1);
 
   async function mintNFTs() {
     if (account && ethereumProvider) {
